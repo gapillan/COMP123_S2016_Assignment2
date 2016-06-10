@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/**
+ * Author's Name: Golden Pamela Apillanes
+ * Author's Student Number: 300867201
+ * Date Modified: June 10nd 2016 
+ * Program Description: Implementing the SuperHero class associated with the Hero Class
+ * Revision History: June 10nd 2016 
+ */
 namespace COMP123_S2016_Assignment2
 {
     /**

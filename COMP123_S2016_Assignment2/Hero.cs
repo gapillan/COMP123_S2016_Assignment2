@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace COMP123_S2016_Assignment2
 {
+    /**
+     * <summary>
+     * This class defines a Hero with special abilities  
+     * </summary> 
+     * 
+     *@class Hero 
+     */
     class Hero
     {
         // creating an instance Random number 
