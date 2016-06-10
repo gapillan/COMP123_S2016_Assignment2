@@ -181,7 +181,7 @@ namespace COMP123_S2016_Assignment2
             int randomNumber = random.Next(1, 7);
             damageAttempted = strength * randomNumber;
             Console.WriteLine(" Damaged {0}", damageAttempted);
-            Console.WriteLine("-----------------------------------------------------------");
+            Console.WriteLine("-----------------------------");
             return strength;
         }
 
