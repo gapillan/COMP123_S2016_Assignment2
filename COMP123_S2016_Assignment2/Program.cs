@@ -21,7 +21,22 @@ namespace COMP123_S2016_Assignment2
          */
         static void Main(string[] args)
         {
-          
+            SuperHero masterRoshi = new SuperHero("Master Roshi");
+
+            string playersResponse = "";
+
+            do
+            {
+                masterRoshi.Fight();
+                masterRoshi.Show();
+                Console.WriteLine();
+                Console.WriteLine("Better luck next time.");
+                Console.WriteLine("Would you like to play again?");
+                Console.WriteLine("YES/NO");
+                playersResponse = Console.ReadLine();
+            }
+            while (playersResponse == "yes");
+            Console.WriteLine();
         }
     }
 }

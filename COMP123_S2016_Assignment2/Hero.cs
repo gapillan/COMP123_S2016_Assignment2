@@ -8,6 +8,9 @@ namespace COMP123_S2016_Assignment2
 {
     class Hero
     {
+        // creating an instance Random number 
+        Random random = new Random();
+
         // PRIVATE INSTANCE VARIABLES ++++++++
         private int _strength;
         private int _speed;
@@ -35,6 +38,61 @@ namespace COMP123_S2016_Assignment2
             }
         }
 
+        /**
+         * <summary>
+         * This is a public property for our private _strength field 
+         * </summary>
+         * @property {int} Strength
+         */
+        public int Strength
+        {
+            get
+            {
+                return this._strength;
+            }
+            set
+            {
+                this._strength = value;
+            }
+        }
+
+
+        /**
+         * <summary>
+         * This is a public property for our private _speed field 
+         * </summary>
+         * @property {int} Speed
+         */
+        public int Speed
+        {
+            get
+            {
+                return this._speed;
+            }
+            set
+            {
+                this._speed = value;
+            }
+        }
+
+        /**
+       * <summary>
+       * This is a public property for our private _health field 
+       * </summary>
+       * @property {int} Health
+       */
+        public int Health
+        {
+            get
+            {
+                return this._health;
+            }
+            set
+            {
+                this._health = value;
+            }
+        }
+
         // CONSTRUCTORS +++++++++++++++++
 
         /**
@@ -49,7 +107,7 @@ namespace COMP123_S2016_Assignment2
         public Hero(string Name)
         {
             this._name = Name;
-            generateAbilities(80, 90, 100);
+            generateAbilities();
         }
 
         // PRIVATE METHODS ++++++++++++++
@@ -66,11 +124,11 @@ namespace COMP123_S2016_Assignment2
          * @method _generateAbilities 
          * @returns {void}
          */
-        public void generateAbilities(int strength, int speed, int health)
+        public void generateAbilities()
         {
-            this.Strength = strength;
-            this.Speed = speed;
-            this.Health = health;
+            this.Strength = random.Next(1, 135);
+            this.Speed = random.Next(1, 125);
+            this.Health = random.Next(1, 145);
         }
 
         /**
@@ -82,20 +140,20 @@ namespace COMP123_S2016_Assignment2
          * @method _hitAttempt 
          * @returns {void}
          */
-        private void _hitAttempt(bool hitAttempt)
+        private bool _hitAttempt()
         {
-            int onePunch = Strength * 2;
-
-            if (hitAttempt)
+            if (random.Next(1, 6)== 3)
             {
                 Console.WriteLine("");
-                Console.WriteLine(" Man Down by {0},  Life Source {1} ", onePunch * 2, this.Health);
+                Console.WriteLine(" Hits attemped by {0}", this.Name);
+                return true; 
             }
             else
             {
-                Console.WriteLine("*** Hit attemped. Show all abilities now ***");
-                Console.WriteLine("  Health: {0}, Strength: {1}, Speed: {2} ", this.Health, this.Strength, this.Speed);
-                Console.WriteLine("--------------------------------------------------------");
+                Console.WriteLine("");
+                Console.WriteLine("  " + this.Name + " did not get any damaged hits");
+                Console.WriteLine("------------------------------------------------");
+                return false;
             }
         }
 
@@ -110,14 +168,29 @@ namespace COMP123_S2016_Assignment2
          * @method _hitDamage 
          * @return void 
          */
-        private void _hitDamage(int hitDamage)
+        private int _hitDamage(int strength)
         {
-            int onePunch = Strength * 2;
-            Console.WriteLine(" Man Down by {0},  Life Source {1} ", onePunch * 5, this.Health - onePunch);
-            Console.WriteLine("-------------------------------------------------------------------------");
+            int damageAttempted;
+            int randomNumber = random.Next(1, 7);
+            damageAttempted = strength * randomNumber;
+            Console.WriteLine(" Damaged {0}", damageAttempted);
+            Console.WriteLine("-----------------------------------------------------------");
+            return strength;
         }
 
         // PUBLIC METHODS +++++++++
+
+        public void Fight()
+        {
+            if (_hitAttempt())
+            {
+                _hitDamage(this._strength);
+            }
+            else
+            {
+
+            }
+        }
 
         /**
         * <summary> 
@@ -130,11 +203,11 @@ namespace COMP123_S2016_Assignment2
         */
         public void Show()
         {
-            Console.WriteLine("                " + this.Name);
+            Console.WriteLine("                " + _name);
             Console.WriteLine("**********************************************");
-            Console.WriteLine("               Strength: " + this.Strength);
-            Console.WriteLine("                Speed: " + this.Speed);
-            Console.WriteLine("               Health: " + this.Health);
+            Console.WriteLine("               Strength: " + _strength);
+            Console.WriteLine("                Speed: " + _speed);
+            Console.WriteLine("               Health: " + _health);
             Console.WriteLine("**********************************************");
         }
     }
